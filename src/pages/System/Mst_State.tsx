@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 import SwitcherFour from "../../components/Switchers/SwitcherFour";
 
@@ -5,6 +7,20 @@ import DatePickerOne from "../../components/Forms/DatePicker/DatePickerOne";
 import DatePickerTwo from "../../components/Forms/DatePicker/DatePickerTwo";
 
 import MultiSelect from "../../components/Forms/SelectGroup/MultiSelect";
+import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +29,8 @@ import {
 } from "@/components/ui/accordion";
 
 const Mst_State = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <Breadcrumb pageName="STATE" />
@@ -37,6 +55,23 @@ const Mst_State = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger asChild>
+          <Button variant="outline" className=" my-[2rem]">
+            Edit Profile
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Edit profile</DialogTitle>
+            <DialogDescription>
+              Make changes to your profile here. Click save when you're done.
+            </DialogDescription>
+          </DialogHeader>
+          <ProfileForm />
+        </DialogContent>
+      </Dialog>
 
       <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
         <div className="flex flex-col gap-9">
@@ -220,3 +255,19 @@ const Mst_State = () => {
 };
 
 export default Mst_State;
+
+function ProfileForm({ className }: React.ComponentProps<"form">) {
+  return (
+    <form className={cn("grid items-start gap-4", className)}>
+      <div className="grid gap-2">
+        <Label htmlFor="email">Email</Label>
+        <Input type="email" id="email" defaultValue="shadcn@example.com" />
+      </div>
+      <div className="grid gap-2">
+        <Label htmlFor="username">Username</Label>
+        <Input id="username" defaultValue="@shadcn" />
+      </div>
+      <Button type="submit">Save changes</Button>
+    </form>
+  );
+}
