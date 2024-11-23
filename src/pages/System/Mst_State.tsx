@@ -1,15 +1,42 @@
-import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import SwitcherFour from '../../components/Switchers/SwitcherFour';
+import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
+import SwitcherFour from "../../components/Switchers/SwitcherFour";
 
-import DatePickerOne from '../../components/Forms/DatePicker/DatePickerOne';
-import DatePickerTwo from '../../components/Forms/DatePicker/DatePickerTwo';
+import DatePickerOne from "../../components/Forms/DatePicker/DatePickerOne";
+import DatePickerTwo from "../../components/Forms/DatePicker/DatePickerTwo";
 
-import MultiSelect from '../../components/Forms/SelectGroup/MultiSelect';
+import MultiSelect from "../../components/Forms/SelectGroup/MultiSelect";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../components/ui/accordion";
 
 const Mst_State = () => {
   return (
     <>
       <Breadcrumb pageName="STATE" />
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Is it styled?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It comes with default styles that matches the other
+            components&apos; aesthetic.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Is it animated?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It's animated by default, but you can disable it if you prefer.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
         <div className="flex flex-col gap-9">
@@ -20,6 +47,7 @@ const Mst_State = () => {
                 Input Fields
               </h3>
             </div>
+
             <div className="flex flex-col gap-5.5 p-6.5">
               <div>
                 <label className="mb-3 block text-black dark:text-white">
@@ -65,7 +93,6 @@ const Mst_State = () => {
               </h3>
             </div>
             <div className="flex flex-col gap-5.5 p-6.5">
-             
               <SwitcherFour />
             </div>
           </div>

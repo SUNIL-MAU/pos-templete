@@ -16,6 +16,20 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       borderRadius: {
         lg: `var(--radius)`,
         md: `calc(var(--radius) - 2px)`,
@@ -247,12 +261,6 @@ module.exports = {
         75: "18.75rem",
       },
       zIndex: {
-        999999: "999999",
-        99999: "99999",
-        9999: "9999",
-        999: "999",
-        99: "99",
-        9: "9",
         1: "1",
       },
       opacity: {
@@ -290,19 +298,6 @@ module.exports = {
       dropShadow: {
         1: "0px 1px 0px #E2E8F0",
         2: "0px 1px 4px rgba(0, 0, 0, 0.12)",
-      },
-      keyframes: {
-        rotating: {
-          "0%, 100%": { transform: "rotate(360deg)" },
-          "50%": { transform: "rotate(0deg)" },
-        },
-      },
-      animation: {
-        "ping-once": "ping 5s cubic-bezier(0, 0, 0.2, 1)",
-        rotating: "rotating 30s linear infinite",
-        "spin-1.5": "spin 1.5s linear infinite",
-        "spin-2": "spin 2s linear infinite",
-        "spin-3": "spin 3s linear infinite",
       },
     },
   },
